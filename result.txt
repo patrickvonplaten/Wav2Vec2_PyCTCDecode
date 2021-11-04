@@ -1,0 +1,15 @@
+Comparison of Wav2Vec2 without Language model vs. Wav2Vec2 with `pyctcdecode` + KenLM 5gram.
+Fine-tuned Wav2Vec2 models were used and evaluated on MLS datasets.
+Take a closer look at `./eval.py` for comparison
+
+==================================================portuguese==================================================
+polish - No LM - | WER: 0.3069742867206763 | CER: 0.06054530156286364 | Time: 58.04590034484863
+polish - With LM - | WER: 0.2291299753434308 | CER: 0.06211174564528545 | Time: 191.65409898757935
+
+==================================================spanish==================================================
+portuguese - No LM - | WER: 0.18208286674132138 | CER: 0.05016682956422096 | Time: 114.61633825302124
+portuguese - With LM - | WER: 0.1487761958086706 | CER: 0.04489231909945738 | Time: 179.78511357307434
+
+==================================================polish==================================================
+spanish - No LM - | WER: 0.2581272104769545 | CER: 0.0703088156033147 | Time: 147.8634352684021
+spanish - With LM - | WER: 0.14927852292116295 | CER: 0.052034208044195916 | Time: 563.0732748508453
