@@ -1,0 +1,4 @@
+transformers>=4.12.0
+datasets>=1.15.0
+jiwer
+librosa

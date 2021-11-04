@@ -38,7 +38,7 @@ def main(args):
     )
 
     # load trained kenlm model
-    ds = load_dataset("/home/patrick/hugging_face/datasets/datasets/multilingual_librispeech", f"{language}", split="test")
+    ds = load_dataset("multilingual_librispeech", f"{language}", split="test")
 
 #    Uncomment for dummy run
 #    ds = ds.select(range(20))

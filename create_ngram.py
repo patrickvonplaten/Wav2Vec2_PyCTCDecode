@@ -12,7 +12,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-ds = load_dataset("/home/patrick/hugging_face/datasets/datasets/multilingual_librispeech", f"{args.language}", split="train")
+ds = load_dataset("multilingual_librispeech", f"{args.language}", split="train")
 
 with open("text.txt", "w") as f:
     f.write(" ".join(ds["text"]))
