@@ -6,7 +6,6 @@
 import torch
 from datasets import load_dataset
 from transformers import AutoModelForCTC, AutoProcessor
-import torchaudio.functional as F
 
 sample = next(iter(load_dataset("common_voice", "es", split="test", streaming=True)))
 
@@ -25,6 +24,7 @@ with torch.no_grad():
 -prediction_ids = torch.argmax(logits, dim=-1)
 -transcription = processor.batch_decode(prediction_ids)
 +transcription = processor.batch_decode(logits.numpy()).text
+# => 'bien y qué regalo vas a abrir primero'
 ```
 
 ## Introduction
