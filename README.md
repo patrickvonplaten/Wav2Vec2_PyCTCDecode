@@ -1,5 +1,34 @@
 # 🤗 Transformers Wav2Vec2 + PyCTCDecode
 
+## UPDATE: PyCTCDecode is merged to Transformers!
+
+```diff
+import torch
+from datasets import load_dataset
+-from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
++from transformers import Wav2Vec2ForCTC, Wav2Vec2ProcessorWithLM
+
+
+sample = next(iter(load_dataset("common_voice", "es", split="test", streaming=True)))
+
+model_id = "patrickvonplaten/wav2vec2-large-xlsr-53-spanish-with-lm"
+
+resampled_audio = F.resample(torch.tensor(sample["audio"]["array"]), 48_000, 16_000).numpy()
+
+model = Wav2Vec2ForCTC.from_pretrained(model_id)
+-processor = Wav2Vec2Processor.from_pretrained(model_id)
++processor = Wav2Vec2ProcessorWithLM.from_pretrained(model_id)
+
+input_values = processor(resampled_audio, return_tensors="pt").input_values
+
+with torch.no_grad():
+    logits = model(input_values).logits
+
+-prediction_ids = torch.argmax(logits, dim=-1)
+-transcription = processor.batch_decode(prediction_ids)
++transcription = processor.batch_decode(logits.numpy()).text
+```
+
 ## Introduction
 
 This repo shows how [🤗 **Transformers**](https://github.com/huggingface/transformers) can be used in combination
