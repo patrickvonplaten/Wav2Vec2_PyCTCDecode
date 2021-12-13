@@ -62,49 +62,15 @@ In a first step on should create a ngram. *E.g.* for `polish` the command would 
 ./create_ngram.py --language polish --path_to_ngram polish.arpa
 ```
 
-After the language model is created, one should open the file. one should add a `</s>`
-The file should have a structure which looks more or less as follows:
+After the language model is created, some lines should be converted so it's compatible with 'pyctcdecode'.
+
+Execute the script to run the conversion:
 
 ```
-\data\        
-ngram 1=86586
-ngram 2=546387
-ngram 3=796581           
-ngram 4=843999             
-ngram 5=850874              
-                                                  
-\1-grams:
--5.7532206      <unk>   0
-0       <s>     -0.06677356                                                                            
--3.4645514      drugi   -0.2088903
-...
+./fix_lm.py --path_to_ngram polish.arpa --path_to_fixed polish_fixed.arpa
 ```
 
-Now it is very important also add a `</s>` token to the n-gram
-so that it can be correctly loaded. You can simple copy the line:
-
-`0       <s>     -0.06677356`
-
-and change `<s>` to `</s>`. When doing this you should also inclease `ngram` by 1.
-The new ngram should look as follows:
-
-```
-\data\
-ngram 1=86587
-ngram 2=546387
-ngram 3=796581
-ngram 4=843999
-ngram 5=850874
-
-\1-grams:
--5.7532206      <unk>   0
-0       <s>     -0.06677356
-0       </s>     -0.06677356
--3.4645514      drugi   -0.2088903
-...
-```
-
-Now the ngram can be correctly used with `pyctcdecode`
+Now the generated 'polish_fixed.arpa' ngram can be correctly used with `pyctcdecode`
 
 
 ### Run eval
