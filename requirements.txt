@@ -3,3 +3,4 @@ datasets>=1.15.0
 jiwer
 librosa
 https://github.com/kpu/kenlm/archive/master.zip
+pyctcdecode
