@@ -1,5 +1,9 @@
 # 🤗 Transformers Wav2Vec2 + PyCTCDecode
 
+## UPDATE 2: 
+
+In-detail blog post which should be much better than this repo is available here: https://huggingface.co/blog/wav2vec2-with-ngram
+
 ## UPDATE: PyCTCDecode is merged to Transformers!
 
 ```diff
