@@ -1,5 +1,7 @@
 # 🤗 Transformers Wav2Vec2 + PyCTCDecode
 
+## **IMPORTANT** This github repo is not actively maintained. Please try to use: https://huggingface.co/docs/transformers/model_doc/wav2vec2#transformers.Wav2Vec2ProcessorWithLM instead**
+
 ## UPDATE 2: 
 
 In-detail blog post which should be much better than this repo is available here: https://huggingface.co/blog/wav2vec2-with-ngram
